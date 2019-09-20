@@ -1,5 +1,5 @@
 PODS:
-  - HYXRouterModule (0.5.0):
+  - HYXRouterModule (0.6.0):
     - MGJRouter (~> 0.10.0)
   - MGJRouter (0.10.0)
 
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  HYXRouterModule: 77cdd1876a737e0cd3fe67209257e4bc88024fc5
+  HYXRouterModule: d4d35396ef5d0c7f4a2d2868208a661265609935
   MGJRouter: 15d94541eb2cc81eff7d577337288feb7ae9575f
 
 PODFILE CHECKSUM: 149ab4441f2ba37f2294e912be1d5d3095aac124

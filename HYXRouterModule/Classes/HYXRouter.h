@@ -17,7 +17,19 @@
 NS_ASSUME_NONNULL_BEGIN
 
 
-#define HidesBottomBar  @"hidesBottomBarWhenPushed"
+
+#define Router_HidesBottomBar  @"hidesBottomBarWhenPushed"
+
+
+/*
+ *在当前页面需要先返回,再push操作
+ */
+#define Router_NeedAutoPop     @"isNeedAutoPop"
+
+/*
+ *在当前页面只需要返回,不要push操作
+ */
+#define Router_OnlyAutoPop     @"isOnlyAutoPop"
 
 @interface HYXRouter : NSObject
 

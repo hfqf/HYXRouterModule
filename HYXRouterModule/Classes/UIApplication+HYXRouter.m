@@ -9,7 +9,7 @@
 #import "UIApplication+HYXRouter.h"
 #import <objc/runtime.h>
 #import <MGJRouter/MGJRouter.h>
-
+#import "HYXRouter.h"
 static const NSString *HYX_ViewController = @"ViewController";
 
 @implementation UIApplication (HYXRouter)
@@ -64,11 +64,31 @@ static const NSString *HYX_ViewController = @"ViewController";
                 }];
                 
                 
-                //kvc,NSBool类型传值
-                [boolPropertys enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                if(boolPropertys.allKeys.count > 0){
+                    //kvc,NSBool类型传值
+                    __block count = 0;
+                    [boolPropertys enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                        count++;
                         [vc setValue:obj forKey:key];
-                }];
-                [navigationVC pushViewController:vc animated:YES];
+                        //某些情况需要先将当前拦截页面pop，再push出新页面,尽量无感知
+                        if([key isEqualToString:Router_NeedAutoPop] && [obj boolValue]){
+                            [navigationVC popViewControllerAnimated:NO];
+                        }
+                        
+                        //某些情况需要将拦截当前页面直接pop即可 
+                        if([key isEqualToString:Router_OnlyAutoPop] && [obj boolValue]){
+                            [navigationVC popViewControllerAnimated:NO];
+                            return;
+                        }
+                        if(count == boolPropertys.allKeys.count){
+                            [navigationVC pushViewController:vc animated:YES];
+                        }
+                    }];
+                }else{
+                    [navigationVC pushViewController:vc animated:YES];
+                }
+               
+                
             }];
         }
     }

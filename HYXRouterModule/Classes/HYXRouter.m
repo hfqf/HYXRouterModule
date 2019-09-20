@@ -112,6 +112,7 @@
             [self pushController:postcard.target];
         };
         if(!callback.isLogined){
+            NSLog(@"processAllInterceptors");
             callback.onInterrupt(callback);
             return YES;
         }

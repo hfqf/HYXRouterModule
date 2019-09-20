@@ -1,6 +1,6 @@
 {
   "name": "HYXRouterModule",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "summary": "A short description of HYXRouterModule.",
   "description": "HYXRouterModule HYXRouterModule HYXRouterModule",
   "homepage": "https://gitee.com/hfqf123/HYXRouterModule",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://gitee.com/hfqf123/HYXRouterModule.git",
-    "tag": "0.5.0"
+    "tag": "0.6.0"
   },
   "platforms": {
     "ios": "8.0"
