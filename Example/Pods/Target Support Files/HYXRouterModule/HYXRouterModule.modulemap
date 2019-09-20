@@ -1,0 +1,6 @@
+framework module HYXRouterModule {
+  umbrella header "HYXRouterModule-umbrella.h"
+
+  export *
+  module * { export * }
+}

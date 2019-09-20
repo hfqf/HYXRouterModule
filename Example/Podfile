@@ -3,11 +3,6 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'HYXRouterModule_Example' do
+  pod 'MGJRouter'
   pod 'HYXRouterModule', :path => '../'
-
-  target 'HYXRouterModule_Tests' do
-    inherit! :search_paths
-
-    pod 'FBSnapshotTestCase'
-  end
 end
