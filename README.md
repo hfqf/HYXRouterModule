@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # HYXRouterModule
 
 [![CI Status](https://img.shields.io/travis/Points/HYXRouterModule.svg?style=flat)](https://travis-ci.org/Points/HYXRouterModule)
@@ -27,3 +28,6 @@ Points, hfqf123@126.com
 ## License
 
 HYXRouterModule is available under the MIT license. See the LICENSE file for more info.
+=======
+2
+>>>>>>> 8f356179b6a3c854de7ab016ed3b27b6be18e684
