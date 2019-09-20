@@ -8,25 +8,14 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HYXRouterModule'
-  s.version          = '0.3.0'
+  s.version          = '0.4.0'
   s.summary          = 'A short description of HYXRouterModule.'
+  s.description      = 'HYXRouterModule HYXRouterModule HYXRouterModule'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'http://192.168.30.16/hfqf123/HYXRouterModule'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://gitee.com/hfqf123/HYXRouterModule'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Points' => 'hfqf123@126.com' }
-  s.source           = { :git => 'http://192.168.30.16/hfqf123/HYXRouterModule.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://gitee.com/hfqf123/HYXRouterModule.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 

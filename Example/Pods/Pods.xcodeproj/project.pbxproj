@@ -58,11 +58,11 @@
 /* Begin PBXFileReference section */
 		0041C05662F1D776510FDCFA66FACD23 /* Pods-HYXRouterModule_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HYXRouterModule_Example-dummy.m"; sourceTree = "<group>"; };
 		116B43175F51E9312D904AA8425E19A3 /* HYXRouterModule-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYXRouterModule-prefix.pch"; sourceTree = "<group>"; };
+		1762D4D5ED1ECB2D5F2C93E3502B4370 /* README.en.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.en.md; sourceTree = "<group>"; };
 		1D4D7FC80285E1B459644F45846D0B22 /* HYXRouterLoginInterceptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYXRouterLoginInterceptor.m; path = HYXRouterModule/Classes/HYXRouterLoginInterceptor.m; sourceTree = "<group>"; };
 		2010A5A11A419BAF0ABCAB0512476B50 /* Pods-HYXRouterModule_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HYXRouterModule_Example.release.xcconfig"; sourceTree = "<group>"; };
 		20BC0E0586BFCA637CBDF2D72EA62880 /* UIApplication+HYXRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+HYXRouter.m"; path = "HYXRouterModule/Classes/UIApplication+HYXRouter.m"; sourceTree = "<group>"; };
 		2539A3550217280DE6AD42C77ABEBF0F /* HYXRouterModule-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYXRouterModule-umbrella.h"; sourceTree = "<group>"; };
-		2578AD4F8183D0F2F4AC18E8609217D2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		3144752BA22EAD8CFDB4FA033E252DC5 /* Pods_HYXRouterModule_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_HYXRouterModule_Example.framework; path = "Pods-HYXRouterModule_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		331D27B3A0DA75B722F2869BEA985E77 /* HYXRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HYXRouter.h; path = HYXRouterModule/Classes/HYXRouter.h; sourceTree = "<group>"; };
 		36688595C94EA30ABD6CA7FD2744EDFD /* MGJRouter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MGJRouter-Info.plist"; sourceTree = "<group>"; };
@@ -74,7 +74,6 @@
 		5751D3B4506DEBB72ABCE7132812190D /* Pods-HYXRouterModule_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HYXRouterModule_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5EE14322DE45DD0B5C416997EDDB60ED /* Pods-HYXRouterModule_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-HYXRouterModule_Example.modulemap"; sourceTree = "<group>"; };
 		64FEBD2A0939FADEB1B6CA3032E47594 /* HYXRouterNavigationCallback.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HYXRouterNavigationCallback.h; path = HYXRouterModule/Classes/HYXRouterNavigationCallback.h; sourceTree = "<group>"; };
-		6C0F4E3185983821FDDBECD34C09A6AC /* HYXRouterModule.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = HYXRouterModule.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		70527DCEED1F9918ACC9CAF90D629E7D /* MGJRouter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MGJRouter.modulemap; sourceTree = "<group>"; };
 		719001469042E6C898B6512E0B9AE83E /* MGJRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGJRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72567B789D3DEEEADD45404617FB8666 /* HYXRouter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYXRouter.m; path = HYXRouterModule/Classes/HYXRouter.m; sourceTree = "<group>"; };
@@ -86,13 +85,14 @@
 		87B7D36CFF1B6DC81189512C34DDDA74 /* Pods-HYXRouterModule_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HYXRouterModule_Example-frameworks.sh"; sourceTree = "<group>"; };
 		8F17FBF0801A03EA50AE070372C03AE5 /* MGJRouter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGJRouter-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B8337CE73102042C7791BE6B9CC00DD0 /* HYXRouterModule.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = HYXRouterModule.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BADD633993E74B102D183570FA35FF78 /* MGJRouter.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MGJRouter.xcconfig; sourceTree = "<group>"; };
 		C6110C74A3164A7437AAFCB3CB29E03F /* HYXRouterOpenBaseModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HYXRouterOpenBaseModel.m; path = HYXRouterModule/Classes/HYXRouterOpenBaseModel.m; sourceTree = "<group>"; };
 		C621F68D522021B0B0F285208EFA958E /* MGJRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGJRouter.h; path = MGJRouter/MGJRouter.h; sourceTree = "<group>"; };
 		C7CCC576707F9EB005A00ECF45C97F35 /* Pods-HYXRouterModule_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HYXRouterModule_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		D5CBA41F3BC6925B785DB7A947F40380 /* MGJRouter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGJRouter-prefix.pch"; sourceTree = "<group>"; };
-		D873CDE0D330EEBE92DEE92AECA0180A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		D970C445B5F9A888187E4206E14268AA /* Pods-HYXRouterModule_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HYXRouterModule_Example-umbrella.h"; sourceTree = "<group>"; };
+		DDC06BE6FD95FCD88B0521BBE0BFBF6B /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		E0AB0577C9973838348B8972ADD1092B /* Pods-HYXRouterModule_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HYXRouterModule_Example-Info.plist"; sourceTree = "<group>"; };
 		E35FC81DF646DEFE5ECE74920DA4C3B8 /* MGJRouter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGJRouter-dummy.m"; sourceTree = "<group>"; };
 		E81919B2F2428C063E799707209EF2D4 /* HYXRouterModule.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = HYXRouterModule.modulemap; sourceTree = "<group>"; };
@@ -129,16 +129,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07AD8B37438BB8182898EA0C08817913 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				6C0F4E3185983821FDDBECD34C09A6AC /* HYXRouterModule.podspec */,
-				2578AD4F8183D0F2F4AC18E8609217D2 /* LICENSE */,
-				D873CDE0D330EEBE92DEE92AECA0180A /* README.md */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
 		2AECDAE11CB2C2336A3EF8D675ECFB51 /* MGJRouter */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +218,16 @@
 			path = "../Target Support Files/MGJRouter";
 			sourceTree = "<group>";
 		};
+		94B4ABA2AA27912A89316F950065AF85 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				B8337CE73102042C7791BE6B9CC00DD0 /* HYXRouterModule.podspec */,
+				DDC06BE6FD95FCD88B0521BBE0BFBF6B /* LICENSE */,
+				1762D4D5ED1ECB2D5F2C93E3502B4370 /* README.en.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
 		A5A4CB77598C6E4558EE55D6840E902E /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,7 +271,7 @@
 				C6110C74A3164A7437AAFCB3CB29E03F /* HYXRouterOpenBaseModel.m */,
 				FE6118D0B6CCABE8D3AC1C693E04F328 /* UIApplication+HYXRouter.h */,
 				20BC0E0586BFCA637CBDF2D72EA62880 /* UIApplication+HYXRouter.m */,
-				07AD8B37438BB8182898EA0C08817913 /* Pod */,
+				94B4ABA2AA27912A89316F950065AF85 /* Pod */,
 				3E1D0943994E203E919D398D715DD4AA /* Support Files */,
 			);
 			name = HYXRouterModule;
