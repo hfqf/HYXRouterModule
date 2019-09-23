@@ -55,9 +55,17 @@
                     if(self.succeedBlock){
                         self.succeedBlock(result);
                     }
+                    [self clear];
                 }];
+    }else{
+         [self clear];
     }
     return YES;
+}
+
+- (void)clear{
+    self.targetModel = nil;
+    self.interceptorModel = nil;
 }
 
 - (BOOL)checkAllConditions:(HYXRouterOpenBaseModel *)model{
@@ -94,6 +102,8 @@
         if(![self processAllInterceptors:callback]){
             [self openModule:model];
         }
+    }else{
+        [self clear];
     }
     return YES;
 }
