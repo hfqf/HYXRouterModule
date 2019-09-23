@@ -12,8 +12,8 @@
 
 @property(nonatomic,strong)HYXRouterNavigationCallback *interceptorModel;
 
-@property(nonatomic,copy)HYXErrorBlock      errorBlock;
-@property(nonatomic,copy)HYXSucceedBlock    succeedBlock;
+@property(nonatomic,copy)HYXRouterErrorBlock      errorBlock;
+@property(nonatomic,copy)HYXRouterSucceedBlock    succeedBlock;
 @end
 
 @implementation HYXRouter
@@ -157,16 +157,16 @@
     };
 }
 
-- (HYXRouter * _Nonnull (^)(HYXSucceedBlock  _Nonnull))then{
-    return ^(HYXSucceedBlock resp){
+- (HYXRouter * _Nonnull (^)(HYXRouterSucceedBlock  _Nonnull))then{
+    return ^(HYXRouterSucceedBlock resp){
         self.succeedBlock =  resp;
         [self callUIModule:self.targetModel naviagationCallback:self.interceptorModel];
         return self;
     };
 }
 
-- (HYXRouter * _Nonnull (^)(HYXErrorBlock _Nonnull))catchError{
-    return ^(HYXErrorBlock  error){
+- (HYXRouter * _Nonnull (^)(HYXRouterErrorBlock _Nonnull))catchError{
+    return ^(HYXRouterErrorBlock  error){
         self.errorBlock = error;
         return self;
     };

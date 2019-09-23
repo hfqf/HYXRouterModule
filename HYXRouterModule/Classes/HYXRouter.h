@@ -56,21 +56,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Promise
 
-typedef void(^HYXSucceedBlock)(id resp);
+typedef void(^HYXRouterSucceedBlock)(id resp);
 
 
 /**
  开始执行路由跳转,并可以返回执行结果
  */
-@property(nonatomic,copy)HYXRouter *(^then)(HYXSucceedBlock succeed);
+@property(nonatomic,copy)HYXRouter *(^then)(HYXRouterSucceedBlock succeed);
 
-typedef void(^HYXErrorBlock)(HYXRouterError * error);
+typedef void(^HYXRouterErrorBlock)(HYXRouterError * error);
 
 
 /**
  跳转失败
  */
-@property(nonatomic,copy)HYXRouter *(^catchError)(HYXErrorBlock error);
+@property(nonatomic,copy)HYXRouter *(^catchError)(HYXRouterErrorBlock error);
 
 #pragma mark - shared
 + (HYXRouter *)shared;
