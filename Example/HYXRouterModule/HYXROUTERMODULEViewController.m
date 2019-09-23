@@ -7,7 +7,7 @@
 //
 
 #import "HYXROUTERMODULEViewController.h"
-
+#import <HYXRouter.h>
 @interface HYXROUTERMODULEViewController ()
 
 @end
@@ -17,7 +17,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    HYXRouterControllerModel *target = [HYXRouterControllerModel
+                                        from:@"HYXTest1ViewController"
+                                        navi:self.navigationController
+                                        objectPropertys:nil
+                                        intPropertys:nil
+                                        boolPropertys:nil];
+    HYXRouterLoginInterceptor *interceptor = [[HYXRouterLoginInterceptor alloc]init];
+    interceptor.isLogined =NO;
+    interceptor.target    = [HYXRouterControllerModel from:@"HYXTest2ViewController" navi:self.navigationController];
+    
+    HYXROUTER.open(target)
+    .interceptor(interceptor)
+    .catchError(^(HYXRouterError * _Nonnull error) {
+        
+    })
+    .then(^(id  _Nonnull resp) {
+        
+    });
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,12 +10,30 @@
 #import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
+
+
+
+#define Router_HidesBottomBar  @"hidesBottomBarWhenPushed"
+/*
+ *在当前页面需要先返回,再push操作
+ */
+#define Router_NeedAutoPop     @"isNeedAutoPop"
+
+/*
+ *在当前页面只需要返回,不要push操作
+ */
+#define Router_OnlyAutoPop     @"isOnlyAutoPop"
+
 /**
  通过路由组件打开组件时传递的参数
  */
 @interface HYXRouterOpenBaseModel : NSObject
 @property(nonatomic,strong)UINavigationController *navi;
 @property(nonatomic,strong)NSString *controller;
+
+@end
+
+@interface HYXRouterControllerModel : HYXRouterOpenBaseModel
 @property(nonatomic,assign)BOOL hidesBottomBarWhenPushed;
 @property(nonatomic,strong)NSDictionary * objectPropertys;//NSString,id,自定义对象，block
 @property(nonatomic,strong)NSDictionary * intPropertys;//NSNumber
@@ -28,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param navi 导航栏控制器
  @return HYXRouterOpenBaseModel
  */
-+ (HYXRouterOpenBaseModel *)from:(NSString *)controller navi:(UINavigationController *)navi;
++ (HYXRouterControllerModel *)from:(NSString * __nullable)controller navi:(UINavigationController * __nullable)navi;
 
 /**
  需要传递参数时的生成路由跳转model
@@ -40,12 +58,19 @@ NS_ASSUME_NONNULL_BEGIN
  @param boolPropertys 将要传入的NSBool参数的类名和value
  @return HYXRouterOpenBaseModel
  */
-+ (HYXRouterOpenBaseModel *)from:(NSString * )controller
-                            navi:(UINavigationController * )navi
-                 objectPropertys:(NSDictionary * )objectPropertys
-                    intPropertys:(NSDictionary * )intPropertys
-                   boolPropertys:(NSDictionary * )boolPropertys;
++ (HYXRouterControllerModel *)from:(NSString * __nullable)controller
+                            navi:(UINavigationController * __nullable)navi
+                 objectPropertys:(NSDictionary * __nullable)objectPropertys
+                    intPropertys:(NSDictionary * __nullable)intPropertys
+                   boolPropertys:(NSDictionary * __nullable)boolPropertys;
 @end
 
+@interface HYXRouterServiceModel : HYXRouterOpenBaseModel
+
+/**
+ service组件需要的参数，根据设定service只需几个string类型的值即可,比如一个id，page等。尽可能的简化字段。
+ */
+@property(nonatomic,strong)NSDictionary * paraPropertys;
+@end
 
 NS_ASSUME_NONNULL_END

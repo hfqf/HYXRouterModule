@@ -1,8 +1,8 @@
 {
   "name": "HYXRouterModule",
-  "version": "0.6.0",
-  "summary": "A short description of HYXRouterModule.",
-  "description": "HYXRouterModule HYXRouterModule HYXRouterModule",
+  "version": "0.7.0",
+  "summary": "huiyinxun.com内部使用的基于MGJRouter扩展的iOS路由组件",
+  "description": "特性:1.根据命名规则自动注册module \\\n                            2.提供UIModule和ServiceModule两个打开方案 \\\n                            3.提供拦截器功能，比如登录 \\\n                            4.使用链式调用,参考js的promise，每次可返回成功或失败的回调信息\\\n                            5.传值时可以携带各种类型参数",
   "homepage": "https://gitee.com/hfqf123/HYXRouterModule",
   "license": {
     "type": "MIT",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://gitee.com/hfqf123/HYXRouterModule.git",
-    "tag": "0.6.0"
+    "tag": "0.7.0"
   },
   "platforms": {
     "ios": "8.0"

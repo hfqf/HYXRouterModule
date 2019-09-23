@@ -12,83 +12,69 @@
 #import "HYXRouterLoginInterceptor.h"
 #import "HYXRouterNavigationCallback.h"
 #import "HYXRouterOpenBaseModel.h"
+#import "HYXRouterError.h"
+#import "HYXRouterSucceed.h"
+
 #import "MGJRouter.h"
+
+
+
+#define HYXROUTER  [HYXRouter shared]
 
 NS_ASSUME_NONNULL_BEGIN
 
 
-
-#define Router_HidesBottomBar  @"hidesBottomBarWhenPushed"
-
-
-/*
- *在当前页面需要先返回,再push操作
+/**
+ HYXRouter跳转路由:
+ 1.根据命名规则自动注册module \
+ 2.提供UIModule和ServiceModule两个打开方案 \
+ 3.提供拦截器功能，比如登录 \
+ 4.使用链式调用,参考js的promise，每次可返回成功或失败的回调信息\
+ 5.传值时可以携带各种类型参数
+ 调用示例:\
+ 
  */
-#define Router_NeedAutoPop     @"isNeedAutoPop"
-
-/*
- *在当前页面只需要返回,不要push操作
- */
-#define Router_OnlyAutoPop     @"isOnlyAutoPop"
-
 @interface HYXRouter : NSObject
+#pragma mark - 调用组件
+
+/**
+ 调用UIModule
+ */
+@property(nonatomic,copy)HYXRouter *(^open)(HYXRouterControllerModel *target);
+
+/**
+ 调用ServiceModule
+ */
+@property(nonatomic,copy)HYXRouter *(^call)(HYXRouterServiceModel *target);
+
+#pragma mark - 拦截器
+
+/**
+ 拦截器
+ */
+@property(nonatomic,copy)HYXRouter *(^interceptor)(HYXRouterNavigationCallback *interceptor);
+
+#pragma mark - Promise
+
+typedef void(^HYXSucceedBlock)(id resp);
 
 
 /**
- 通过路由组件跳转,调用示例
- 
-        示例:
-             目标控制器的属性
- 
-             @ protocol  HYXMyTestViewControllerDelegate<NSObject>
- 
-             @required
- 
-             - (void)HYXMyTestViewControllerFun1:(NSString *_Nonnull)ret;
- 
- 
-             @end
- 
-             typedef void(^HYXMyTestViewControllerBlock)(NSDictionary *resp);
- 
-             @ interface HYXMyTestViewController : HYXBaseCommonController
-             @property(nonatomic,copy) NSString *testId;
-             @property(nonatomic,weak) id<HYXMyTestViewControllerDelegate>hyxDelegate;
-             @property(nonatomic,copy) HYXMyTestViewControllerBlock block;
-             @end
- 
-             具体跳转写法:
-             [HYXRouter pushController:[HYXRouterOpenBaseModel
-                                  from:@"HYXMyTestViewController"
-                                  navi:self.controller.navigationController
-                       objectPropertys:@{
-                                @"testId":@"3",
-                                @"block":block,
-                                @"hyxDelegate":self,
-                                }
-                         intPropertys:@{}
-                        boolPropertys:@{
-                                    @"hidesBottomBarWhenPushed":@(YES)
-                        }]];
- 
- 
-
- @param model 参数
- @return BOOL
+ 开始执行路由跳转,并可以返回执行结果
  */
-+ (BOOL)pushController:(HYXRouterOpenBaseModel *)model;
+@property(nonatomic,copy)HYXRouter *(^then)(HYXSucceedBlock succeed);
 
-
+typedef void(^HYXErrorBlock)(HYXRouterError * error);
 
 
 /**
- 带拦截器的跳转方法,比如要判断是否已经登录,是否已经分享等
-
- @param model 原始跳转页面信息
- @param callback 带页面跳转信息的拦截器
- @return BOOL
+ 跳转失败
  */
-+ (BOOL)pushController:(HYXRouterOpenBaseModel *)model naviagationCallback:(HYXRouterNavigationCallback *)callback;
+@property(nonatomic,copy)HYXRouter *(^catchError)(HYXErrorBlock error);
+
+#pragma mark - shared
++ (HYXRouter *)shared;
 @end
+
 
 NS_ASSUME_NONNULL_END

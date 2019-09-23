@@ -12,7 +12,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:frame];
+    self.window.backgroundColor = [UIColor whiteColor];
+    UINavigationController *rootVC = [[UINavigationController alloc] initWithRootViewController:[[NSClassFromString(@"HYXROUTERMODULEViewController") alloc]init]];
+    self.window.rootViewController = rootVC;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

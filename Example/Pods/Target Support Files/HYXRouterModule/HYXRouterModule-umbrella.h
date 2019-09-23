@@ -11,9 +11,11 @@
 #endif
 
 #import "HYXRouter.h"
+#import "HYXRouterError.h"
 #import "HYXRouterLoginInterceptor.h"
 #import "HYXRouterNavigationCallback.h"
 #import "HYXRouterOpenBaseModel.h"
+#import "HYXRouterSucceed.h"
 #import "UIApplication+HYXRouter.h"
 
 FOUNDATION_EXPORT double HYXRouterModuleVersionNumber;

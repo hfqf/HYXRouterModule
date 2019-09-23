@@ -11,7 +11,8 @@
 @implementation HYXRouterLoginInterceptor
 -(instancetype)init{
     if(self = [super init]){
-        self.isLogined = YES;
+        self.isLogined = NO;
+        self.target = nil;
     }
     return self;
 }

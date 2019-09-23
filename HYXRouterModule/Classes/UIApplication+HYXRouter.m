@@ -10,7 +10,8 @@
 #import <objc/runtime.h>
 #import <MGJRouter/MGJRouter.h>
 #import "HYXRouter.h"
-static const NSString *HYX_ViewController = @"ViewController";
+
+#define Router_Scheme @"ios"
 
 @implementation UIApplication (HYXRouter)
 
@@ -21,8 +22,13 @@ static const NSString *HYX_ViewController = @"ViewController";
  */
 
 
-+ (NSString *)mgRouterUrl:(Class) _class{
-    NSString *_url = [NSString stringWithFormat:@"%@://%@",HYX_ViewController,NSStringFromClass(_class)];
++ (NSString *)uiRouterUrl:(Class) _class{
+    NSString *_url = [NSString stringWithFormat:@"%@://%@",Router_Scheme,NSStringFromClass(_class)];
+    return _url;
+}
+
++ (NSString *)serviceRouterUrl:(Class) _class{
+    NSString *_url = [NSString stringWithFormat:@"%@://%@",Router_Scheme,NSStringFromClass(_class)];
     return _url;
 }
 
@@ -38,12 +44,16 @@ static const NSString *HYX_ViewController = @"ViewController";
         Class cls = classes[i];
         NSString *moduleName = NSStringFromClass(cls);
         if(([moduleName hasPrefix:@"HYX"]&&[moduleName rangeOfString:@"Controller"].length > 0)){
-            [MGJRouter registerURLPattern:[self mgRouterUrl:cls]
+            [MGJRouter registerURLPattern:[self uiRouterUrl:cls]
                           toObjectHandler:^id(NSDictionary *routerParameters) {
                               return [[[cls class] alloc]init];
                           }];
             
-            [MGJRouter registerURLPattern:[self mgRouterUrl:cls] toHandler:^(NSDictionary *routerParameters) {
+            [MGJRouter registerURLPattern:[self uiRouterUrl:cls] toHandler:^(NSDictionary *routerParameters) {
+                
+                MGJRouterHandler completion = routerParameters[MGJRouterParameterCompletion];
+        
+                
                 UINavigationController *navigationVC = routerParameters[MGJRouterParameterUserInfo][@"navigationController"];
                 NSString *_class = routerParameters[MGJRouterParameterUserInfo][@"class"];
                 
@@ -66,7 +76,7 @@ static const NSString *HYX_ViewController = @"ViewController";
                 
                 if(boolPropertys.allKeys.count > 0){
                     //kvc,NSBool类型传值
-                    __block count = 0;
+                    __block int count = 0;
                     [boolPropertys enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
                         count++;
                         [vc setValue:obj forKey:key];
@@ -78,17 +88,18 @@ static const NSString *HYX_ViewController = @"ViewController";
                         //某些情况需要将拦截当前页面直接pop即可 
                         if([key isEqualToString:Router_OnlyAutoPop] && [obj boolValue]){
                             [navigationVC popViewControllerAnimated:NO];
+                            completion((id)[HYXRouterSucceed new]);
                             return;
                         }
                         if(count == boolPropertys.allKeys.count){
+                            completion((id)[HYXRouterSucceed new]);
                             [navigationVC pushViewController:vc animated:YES];
                         }
                     }];
                 }else{
+                    completion((id)[HYXRouterSucceed new]);
                     [navigationVC pushViewController:vc animated:YES];
                 }
-               
-                
             }];
         }
     }

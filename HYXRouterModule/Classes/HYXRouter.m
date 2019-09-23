@@ -7,72 +7,79 @@
 // 路由组件派发中心
 
 #import "HYXRouter.h"
-#import <MGJRouter/MGJRouter.h>
+@interface HYXRouter()
+@property(nonatomic,strong)HYXRouterOpenBaseModel *targetModel;
+
+@property(nonatomic,strong)HYXRouterNavigationCallback *interceptorModel;
+
+@property(nonatomic,copy)HYXErrorBlock      errorBlock;
+@property(nonatomic,copy)HYXSucceedBlock    succeedBlock;
+@end
+
 @implementation HYXRouter
 
++ (HYXRouter *)shared{
+    static HYXRouter *shared = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shared = [[self alloc] init];
+    });
+    return shared; 
+}
+- (instancetype)init{
+    if(self=[super init]){
+        
+    }
+    return self;
+}
+
+#pragma mark - UI组件
 /**
  通过路由组件跳转,调用示例
- 
-             示例:
-             目标控制器的属性
- 
-             @protocol  HYXMyTestViewControllerDelegate<NSObject>
- 
-             @required
- 
-             - (void)HYXMyTestViewControllerFun1:(NSString *_Nonnull)ret;
- 
- 
-             @end
- 
-             typedef void(^HYXMyTestViewControllerBlock)(NSDictionary *resp);
- 
-             @interface HYXMyTestViewController : HYXBaseCommonController
-             @property(nonatomic,copy) NSString *testId;
-             @property(nonatomic,weak) id<HYXMyTestViewControllerDelegate>hyxDelegate;
-             @property(nonatomic,copy) HYXMyTestViewControllerBlock block;
-             @end
- 
-             具体跳转写法:
-             [HYXRouter pushController:[HYXRouterOpenBaseModel
-                                  from:@"HYXMyTestViewController"
-                                  navi:self.controller.navigationController
-                       objectPropertys:@{
-                             @"testId":@"3",
-                             @"block":block,
-                             @"hyxDelegate":self,
-                             }
-                        intPropertys:@{}
-                        boolPropertys:@{
-                            @"hidesBottomBarWhenPushed":@(YES)
-                     }
-            ]];
- 
+
  @param model 参数
  @return BOOL
  */
-+ (BOOL)pushController:(HYXRouterOpenBaseModel *)model{
-    
-    if(model.navi == nil){
-        NSLog(@"push失败,路由导航控制器不能为nil");
-        return NO;
+- (BOOL)openModule:(HYXRouterControllerModel *)model{
+    if([self checkAllConditions:model]){
+        NSString *_url = [UIApplication uiRouterUrl:NSClassFromString(model.controller)];
+        //    id _vc = [MGJRouter objectForURL:_url];
+        [MGJRouter openURL:_url
+              withUserInfo:@{@"navigationController":model.navi,
+                             @"class":model.controller,
+                             @"objectPropertys":model.objectPropertys,
+                             @"intPropertys":model.intPropertys,
+                             @"boolPropertys":model.boolPropertys,
+                             }
+                completion:^(id result) {
+                    if(self.succeedBlock){
+                        self.succeedBlock(result);
+                    }
+                }];
     }
-    NSString *_url = [UIApplication mgRouterUrl:NSClassFromString(model.controller)];
-//    id _vc = [MGJRouter objectForURL:_url];
-    [MGJRouter openURL:_url
-          withUserInfo:@{@"navigationController":model.navi,
-                         @"class":model.controller,
-                         @"objectPropertys":model.objectPropertys,
-                         @"intPropertys":model.intPropertys,
-                         @"boolPropertys":model.boolPropertys,
-                         }
-            completion:^(id result) {
-                
-            }];
-    
     return YES;
 }
 
+- (BOOL)checkAllConditions:(HYXRouterOpenBaseModel *)model{
+    if(model.navi == nil){
+        HYXRouterError *error = [[HYXRouterError alloc]init];
+        error.errorCode = error_no_nagation;
+        if(self.errorBlock){
+            self.errorBlock(error);
+            NSLog(@"push失败,路由导航控制器不能为nil");
+        }
+        return NO;
+    }else if (model.controller == nil){
+        HYXRouterError *error = [[HYXRouterError alloc]init];
+        error.errorCode = error_no_controller;
+        if(self.errorBlock){
+            self.errorBlock(error);
+            NSLog(@"push失败,无目标控制器");
+        }
+        return NO;
+    }
+    return YES;
+}
 
 /**
  带拦截器的跳转方法,比如要判断是否已经登录,是否已经分享等
@@ -81,10 +88,12 @@
  @param callback 带页面跳转信息的拦截器
  @return BOOL
  */
-+ (BOOL)pushController:(HYXRouterOpenBaseModel *)model naviagationCallback:(HYXRouterNavigationCallback *)callback{
-    //拦截策略流程
-    if(![self processAllInterceptors:callback]){
-        [self pushController:model];
+- (BOOL)callUIModule:(id)model naviagationCallback:(HYXRouterNavigationCallback *)callback{
+    if([self checkAllConditions:model]){
+        //拦截策略流程
+        if(![self processAllInterceptors:callback]){
+            [self openModule:model];
+        }
     }
     return YES;
 }
@@ -96,7 +105,7 @@
  @param callback target
  @return BOOL
  */
-+(BOOL)processAllInterceptors:(HYXRouterNavigationCallback *)callback{
+- (BOOL)processAllInterceptors:(HYXRouterNavigationCallback *)callback{
     
     if([callback isKindOfClass:[HYXRouterLoginInterceptor class]]){
         callback.onFound = ^(HYXRouterNavigationCallback *postcard) {
@@ -109,7 +118,7 @@
             
         };
         callback.onInterrupt = ^(HYXRouterNavigationCallback *postcard) {
-            [self pushController:postcard.target];
+             [self openModule:postcard.target];
         };
         if(!callback.isLogined){
             NSLog(@"processAllInterceptors");
@@ -120,5 +129,48 @@
     //TODO 其它策略
     return NO;
 }
+
+#pragma mark - 服务组件
+- (BOOL)callServiceModule:(HYXRouterServiceModel *)model naviagationCallback:(HYXRouterNavigationCallback *)callback{
+    return YES;
+}
+
+#pragma mark - blocks
+- (HYXRouter * _Nonnull (^)(HYXRouterControllerModel * _Nonnull))open{
+    return ^(HYXRouterControllerModel *target){
+        self.targetModel = target;
+        return self;
+    };
+}
+
+- (HYXRouter * _Nonnull (^)(HYXRouterServiceModel * _Nonnull))call{
+    return ^(HYXRouterServiceModel *target){
+        self.targetModel = target;
+        return self;
+    };
+}
+
+- (HYXRouter * _Nonnull (^)(HYXRouterNavigationCallback * _Nonnull))interceptor{
+    return ^(HYXRouterNavigationCallback *interceptor){
+        self.interceptorModel = interceptor;
+        return self;
+    };
+}
+
+- (HYXRouter * _Nonnull (^)(HYXSucceedBlock  _Nonnull))then{
+    return ^(HYXSucceedBlock resp){
+        self.succeedBlock =  resp;
+        [self callUIModule:self.targetModel naviagationCallback:self.interceptorModel];
+        return self;
+    };
+}
+
+- (HYXRouter * _Nonnull (^)(HYXErrorBlock _Nonnull))catchError{
+    return ^(HYXErrorBlock  error){
+        self.errorBlock = error;
+        return self;
+    };
+}
+
 @end
 

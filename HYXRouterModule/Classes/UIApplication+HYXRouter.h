@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIApplication (HYXRouter)
 
-+ (NSString *)mgRouterUrl:(Class) _class;
++ (NSString *)uiRouterUrl:(Class) _class;
+
++ (NSString *)serviceRouterUrl:(Class) _class;
 
 @end
 

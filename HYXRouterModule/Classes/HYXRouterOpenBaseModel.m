@@ -11,6 +11,13 @@
 
 @implementation HYXRouterOpenBaseModel
 
+
+
+
+@end
+
+@implementation HYXRouterControllerModel
+
 /**
  普通的生成路由跳转model，无需任何参数
  
@@ -18,10 +25,13 @@
  @param navi 导航栏控制器
  @return HYXRouterOpenBaseModel
  */
-+ (HYXRouterOpenBaseModel *)from:(NSString *)controller navi:(UINavigationController *)navi{
-    HYXRouterOpenBaseModel *data = [[HYXRouterOpenBaseModel alloc]init];
++ (HYXRouterControllerModel *)from:(NSString * __nullable)controller navi:(UINavigationController * __nullable)navi{
+    HYXRouterControllerModel *data = [[HYXRouterControllerModel alloc]init];
     data.navi = navi;
     data.controller = controller;
+    data.objectPropertys = @{};
+    data.intPropertys = @{};
+    data.boolPropertys = @{};
     return data;
 }
 
@@ -37,12 +47,12 @@
  @param boolPropertys 将要传入的NSBool参数的类名和value
  @return HYXRouterOpenBaseModel
  */
-+ (HYXRouterOpenBaseModel *)from:(NSString * )controller
-                            navi:(UINavigationController * )navi
-                 objectPropertys:(NSDictionary * )objectPropertys
-                    intPropertys:(NSDictionary * )intPropertys
-                   boolPropertys:(NSDictionary * )boolPropertys{
-    HYXRouterOpenBaseModel *data = [[HYXRouterOpenBaseModel alloc]init];
++ (HYXRouterControllerModel *)from:(NSString * __nullable)controller
+                            navi:(UINavigationController * __nullable)navi
+                 objectPropertys:(NSDictionary * __nullable)objectPropertys
+                    intPropertys:(NSDictionary * __nullable)intPropertys
+                   boolPropertys:(NSDictionary * __nullable)boolPropertys{
+    HYXRouterControllerModel *data = [[HYXRouterControllerModel alloc]init];
     data.navi = navi;
     data.controller = controller;
     data.objectPropertys = objectPropertys == nil ? @{} : objectPropertys;
@@ -50,5 +60,7 @@
     data.boolPropertys = boolPropertys == nil ? @{} : boolPropertys;
     return data;
 }
+
+
 
 @end
