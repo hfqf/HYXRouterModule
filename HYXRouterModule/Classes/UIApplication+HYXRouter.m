@@ -89,6 +89,7 @@
                         if([key isEqualToString:Router_OnlyAutoPop] && [obj boolValue]){
                             [navigationVC popViewControllerAnimated:NO];
                             completion((id)[HYXRouterSucceed new]);
+                            *stop = YES;
                             return;
                         }
                         if(count == boolPropertys.allKeys.count){

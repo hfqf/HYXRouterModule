@@ -24,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 #define Router_OnlyAutoPop     @"isOnlyAutoPop"
 
+
+/*
+ *拦截器页面过后的下一个页面
+*/
+#define Router_targetVcName    @"targetVcName"
+
 /**
  通过路由组件打开组件时传递的参数
  */
