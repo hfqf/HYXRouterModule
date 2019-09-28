@@ -12,6 +12,7 @@
 #import "HYXRouter.h"
 
 #define Router_Scheme @"ios"
+#define Router_Host   @"huiyinxun.com"
 
 @implementation UIApplication (HYXRouter)
 
@@ -21,14 +22,13 @@
  *1.方便路由组件的自动注册，说个规则,初始化控制器时：加统一前缀HYX,统一后缀Controller
  */
 
-
 + (NSString *)uiRouterUrl:(Class) _class{
-    NSString *_url = [NSString stringWithFormat:@"%@://%@",Router_Scheme,NSStringFromClass(_class)];
+    NSString *_url = [NSString stringWithFormat:@"%@://%@/%@",Router_Scheme,Router_Host,NSStringFromClass(_class)];
     return _url;
 }
 
 + (NSString *)serviceRouterUrl:(Class) _class{
-    NSString *_url = [NSString stringWithFormat:@"%@://%@",Router_Scheme,NSStringFromClass(_class)];
+    NSString *_url = [NSString stringWithFormat:@"%@://%@/%@",Router_Scheme,Router_Host,NSStringFromClass(_class)];
     return _url;
 }
 
