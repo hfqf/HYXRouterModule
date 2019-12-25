@@ -41,6 +41,7 @@
  @return BOOL
  */
 - (BOOL)openModule:(HYXRouterControllerModel *)model{
+    WeakSelf(weakSelf);
     if([self checkAllConditions:model]){
         NSString *_url = [UIApplication uiRouterUrl:NSClassFromString(model.controller)];
         //    id _vc = [MGJRouter objectForURL:_url];
@@ -52,13 +53,13 @@
                              @"boolPropertys":model.boolPropertys,
                              }
                 completion:^(id result) {
-                    if(self.succeedBlock){
-                        self.succeedBlock(result);
+                    if(weakSelf.succeedBlock){
+                        weakSelf.succeedBlock(result);
                     }
-                    [self clear];
+                    [weakSelf clear];
                 }];
     }else{
-         [self clear];
+         [weakSelf clear];
     }
     return YES;
 }
@@ -69,19 +70,20 @@
 }
 
 - (BOOL)checkAllConditions:(HYXRouterOpenBaseModel *)model{
+    WeakSelf(weakSelf);
     if(model.navi == nil){
         HYXRouterError *error = [[HYXRouterError alloc]init];
         error.errorCode = error_no_nagation;
-        if(self.errorBlock){
-            self.errorBlock(error);
+        if(weakSelf.errorBlock){
+            weakSelf.errorBlock(error);
             NSLog(@"push失败,路由导航控制器不能为nil");
         }
         return NO;
     }else if (model.controller == nil){
         HYXRouterError *error = [[HYXRouterError alloc]init];
         error.errorCode = error_no_controller;
-        if(self.errorBlock){
-            self.errorBlock(error);
+        if(weakSelf.errorBlock){
+            weakSelf.errorBlock(error);
             NSLog(@"push失败,无目标控制器");
         }
         return NO;
@@ -97,17 +99,17 @@
  @return BOOL
  */
 - (BOOL)callUIModule:(id)model naviagationCallback:(HYXRouterNavigationCallback *)callback{
-    if([self checkAllConditions:model]){
+    WeakSelf(weakSelf);
+    if([weakSelf checkAllConditions:model]){
         //拦截策略流程
-        if(![self processAllInterceptors:callback]){
-            [self openModule:model];
+        if(![weakSelf processAllInterceptors:callback]){
+            [weakSelf openModule:model];
         }
     }else{
-        [self clear];
+        [weakSelf clear];
     }
     return YES;
 }
-
 
 /**
  拦截策略，如果一个拦截器都没有，则返回NO，push出原来页面
@@ -116,7 +118,7 @@
  @return BOOL
  */
 - (BOOL)processAllInterceptors:(HYXRouterNavigationCallback *)callback{
-    
+    WeakSelf(weakSelf);
     if([callback isKindOfClass:[HYXRouterLoginInterceptor class]]){
         callback.onFound = ^(HYXRouterNavigationCallback *postcard) {
             
@@ -128,7 +130,7 @@
             
         };
         callback.onInterrupt = ^(HYXRouterNavigationCallback *postcard) {
-             [self openModule:postcard.target];
+             [weakSelf openModule:postcard.target];
         };
         if(!callback.isLogined){
             NSLog(@"processAllInterceptors");
@@ -147,38 +149,43 @@
 
 #pragma mark - blocks
 - (HYXRouter * _Nonnull (^)(HYXRouterControllerModel * _Nonnull))open{
+    WeakSelf(weakSelf);
     return ^(HYXRouterControllerModel *target){
-        self.targetModel = target;
-        return self;
+        weakSelf.targetModel = target;
+        return weakSelf;
     };
 }
 
 - (HYXRouter * _Nonnull (^)(HYXRouterServiceModel * _Nonnull))call{
+    WeakSelf(weakSelf);
     return ^(HYXRouterServiceModel *target){
-        self.targetModel = target;
-        return self;
+        weakSelf.targetModel = target;
+        return weakSelf;
     };
 }
 
 - (HYXRouter * _Nonnull (^)(HYXRouterNavigationCallback * _Nonnull))interceptor{
+     WeakSelf(weakSelf);
     return ^(HYXRouterNavigationCallback *interceptor){
-        self.interceptorModel = interceptor;
-        return self;
+        weakSelf.interceptorModel = interceptor;
+        return weakSelf;
     };
 }
 
 - (HYXRouter * _Nonnull (^)(HYXRouterSucceedBlock  _Nonnull))then{
+    WeakSelf(weakSelf);
     return ^(HYXRouterSucceedBlock resp){
-        self.succeedBlock =  resp;
-        [self callUIModule:self.targetModel naviagationCallback:self.interceptorModel];
-        return self;
+        weakSelf.succeedBlock =  resp;
+        [weakSelf callUIModule:weakSelf.targetModel naviagationCallback:weakSelf.interceptorModel];
+        return weakSelf;
     };
 }
 
 - (HYXRouter * _Nonnull (^)(HYXRouterErrorBlock _Nonnull))catchError{
+    WeakSelf(weakSelf);
     return ^(HYXRouterErrorBlock  error){
-        self.errorBlock = error;
-        return self;
+        weakSelf.errorBlock = error;
+        return weakSelf;
     };
 }
 

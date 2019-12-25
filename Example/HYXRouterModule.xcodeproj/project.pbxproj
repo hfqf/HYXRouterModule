@@ -46,7 +46,7 @@
 		844EE92B23385BCE006DFA30 /* HYXTest2ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HYXTest2ViewController.m; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99EECE7A22FECD5343213722 /* Pods-HYXRouterModule_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HYXRouterModule_Example.debug.xcconfig"; path = "Target Support Files/Pods-HYXRouterModule_Example/Pods-HYXRouterModule_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A77FC6BA12CF99AE987F9062 /* HYXRouterModule.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HYXRouterModule.podspec; path = ../HYXRouterModule.podspec; sourceTree = "<group>"; };
+		A77FC6BA12CF99AE987F9062 /* HYXRouterModule.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HYXRouterModule.podspec; path = ../HYXRouterModule.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C0B64C6DBA92C5AA6A7C70EB /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

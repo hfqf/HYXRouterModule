@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import <MGJRouter/MGJRouter.h>
 #import "HYXRouter.h"
+#import "NSObject+Router.h"
 
 #define Router_Scheme @"ios"
 #define Router_Host   @"huiyinxun.com"
@@ -44,11 +45,6 @@
         Class cls = classes[i];
         NSString *moduleName = NSStringFromClass(cls);
         if(([moduleName hasPrefix:@"HYX"]&&[moduleName rangeOfString:@"Controller"].length > 0)){
-            [MGJRouter registerURLPattern:[self uiRouterUrl:cls]
-                          toObjectHandler:^id(NSDictionary *routerParameters) {
-                              return [[[cls class] alloc]init];
-                          }];
-            
             [MGJRouter registerURLPattern:[self uiRouterUrl:cls] toHandler:^(NSDictionary *routerParameters) {
                 
                 MGJRouterHandler completion = routerParameters[MGJRouterParameterCompletion];
@@ -62,7 +58,13 @@
                 NSDictionary *boolPropertys = routerParameters[MGJRouterParameterUserInfo][@"boolPropertys"];
                 
                 
-                UIViewController *vc = [[NSClassFromString(_class) alloc] init];
+                UIViewController *vc = nil;
+                UIViewController *target = [NSClassFromString(_class) viewController];
+                if( target != nil){
+                    vc = target;
+                }else{
+                    vc = [[NSClassFromString(_class) alloc]init];
+                }
                 
                 //kvc,NSString,id,自定义对象，block类型传值
                 [objectPropertys enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
@@ -72,7 +74,6 @@
                 [intPropertys enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
                     [vc setValue:obj forKey:key];
                 }];
-                
                 
                 if(boolPropertys.allKeys.count > 0){
                     //kvc,NSBool类型传值
@@ -84,7 +85,6 @@
                         if([key isEqualToString:Router_NeedAutoPop] && [obj boolValue]){
                             [navigationVC popViewControllerAnimated:NO];
                         }
-                        
                         //某些情况需要将拦截当前页面直接pop即可 
                         if([key isEqualToString:Router_OnlyAutoPop] && [obj boolValue]){
                             [navigationVC popViewControllerAnimated:NO];

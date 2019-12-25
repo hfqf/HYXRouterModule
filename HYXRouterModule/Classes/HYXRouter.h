@@ -21,6 +21,8 @@
 
 #define HYXROUTER  [HYXRouter shared]
 
+#define WeakSelf(weakSelf)    __weak __typeof(&*self) weakSelf = self
+
 NS_ASSUME_NONNULL_BEGIN
 
 
