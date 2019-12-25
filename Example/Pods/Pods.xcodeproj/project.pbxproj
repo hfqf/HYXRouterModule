@@ -21,8 +21,8 @@
 		5BCBEDF7230BDF126D456D2AD76CA4FB /* HYXRouterError.h in Headers */ = {isa = PBXBuildFile; fileRef = BA3109FD97F7FDA58D7B32ED932A4157 /* HYXRouterError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7136C74C569A59BD7F352A49C87A8133 /* HYXRouterSucceed.m in Sources */ = {isa = PBXBuildFile; fileRef = C1757A1E8BCF32E6739477F0B99D0D10 /* HYXRouterSucceed.m */; };
 		772DA339D5D2138DB809ABD5CBB2BDA3 /* MGJRouter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E35FC81DF646DEFE5ECE74920DA4C3B8 /* MGJRouter-dummy.m */; };
-		8445FF0023B340B700103A9E /* NSObject+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 8445FEFE23B340B700103A9E /* NSObject+Router.m */; };
-		8445FF0123B340B700103A9E /* NSObject+Router.h in Headers */ = {isa = PBXBuildFile; fileRef = 8445FEFF23B340B700103A9E /* NSObject+Router.h */; };
+		8445FF0423B3473B00103A9E /* NSObject+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 8445FF0223B3473A00103A9E /* NSObject+Router.m */; };
+		8445FF0523B3473B00103A9E /* NSObject+Router.h in Headers */ = {isa = PBXBuildFile; fileRef = 8445FF0323B3473B00103A9E /* NSObject+Router.h */; };
 		998E1FF3EC72A75203D4A5B7F7BA2E12 /* MGJRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = C621F68D522021B0B0F285208EFA958E /* MGJRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		999A1FFEF9EC56480EA1F66362E5DC3C /* HYXRouterLoginInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = B0EEC73B1DBE16068CA172FE43405D57 /* HYXRouterLoginInterceptor.m */; };
 		9B9CC2A46B7561E42ADBD6EBFB2DA793 /* HYXRouterLoginInterceptor.h in Headers */ = {isa = PBXBuildFile; fileRef = B11EF63DBBB3EF8CFF16FB94E8F457E7 /* HYXRouterLoginInterceptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -82,8 +82,8 @@
 		7B1FB3877F7FAA19795E290F949BE360 /* MGJRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGJRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3C93ABE3F43AB8A08B7D62F5B4A104 /* HYXRouterModule-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HYXRouterModule-umbrella.h"; sourceTree = "<group>"; };
 		838438E8F2B58213B114B63791BE7B96 /* UIApplication+HYXRouter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIApplication+HYXRouter.h"; path = "HYXRouterModule/Classes/UIApplication+HYXRouter.h"; sourceTree = "<group>"; };
-		8445FEFE23B340B700103A9E /* NSObject+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Router.m"; sourceTree = "<group>"; };
-		8445FEFF23B340B700103A9E /* NSObject+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Router.h"; sourceTree = "<group>"; };
+		8445FF0223B3473A00103A9E /* NSObject+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Router.m"; path = "HYXRouterModule/Classes/NSObject+Router.m"; sourceTree = "<group>"; };
+		8445FF0323B3473B00103A9E /* NSObject+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Router.h"; path = "HYXRouterModule/Classes/NSObject+Router.h"; sourceTree = "<group>"; };
 		851C761147A7C68A68513313C1DE7A3B /* HYXRouterModule.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HYXRouterModule.xcconfig; sourceTree = "<group>"; };
 		87B7D36CFF1B6DC81189512C34DDDA74 /* Pods-HYXRouterModule_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HYXRouterModule_Example-frameworks.sh"; sourceTree = "<group>"; };
 		8F17FBF0801A03EA50AE070372C03AE5 /* MGJRouter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGJRouter-umbrella.h"; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 		AC37173E1D083150EE1FC51C420AC174 /* HYXRouterModule */ = {
 			isa = PBXGroup;
 			children = (
-				8445FEFF23B340B700103A9E /* NSObject+Router.h */,
-				8445FEFE23B340B700103A9E /* NSObject+Router.m */,
+				8445FF0323B3473B00103A9E /* NSObject+Router.h */,
+				8445FF0223B3473A00103A9E /* NSObject+Router.m */,
 				6099CC340C29E479467CE11E21E8DE7C /* HYXRouter.h */,
 				DD4B37DD9641BF151DC244B878F136CE /* HYXRouter.m */,
 				BA3109FD97F7FDA58D7B32ED932A4157 /* HYXRouterError.h */,
@@ -316,9 +316,9 @@
 				3CAE69A4CE6912A5DCB8EED730611596 /* HYXRouterModule-umbrella.h in Headers */,
 				C10AFD208CEC8FAED0A0CD11BDD54AFA /* HYXRouterNavigationCallback.h in Headers */,
 				16AC6854576BE162E965026097699B1C /* HYXRouterOpenBaseModel.h in Headers */,
-				8445FF0123B340B700103A9E /* NSObject+Router.h in Headers */,
 				3134E0EB6C63786C17B5FECB9D3FDDFE /* HYXRouterSucceed.h in Headers */,
 				A980B9C1209A1D6FB5A7CC047676E43D /* UIApplication+HYXRouter.h in Headers */,
+				8445FF0523B3473B00103A9E /* NSObject+Router.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,8 +458,8 @@
 			files = (
 				063030B0F022710344B23F8291A17BA3 /* HYXRouter.m in Sources */,
 				AD3BD5F790FCA362776C2DE28DEC4E58 /* HYXRouterError.m in Sources */,
+				8445FF0423B3473B00103A9E /* NSObject+Router.m in Sources */,
 				999A1FFEF9EC56480EA1F66362E5DC3C /* HYXRouterLoginInterceptor.m in Sources */,
-				8445FF0023B340B700103A9E /* NSObject+Router.m in Sources */,
 				C835F6A9E189CD2B82D4E5EFBFEBA7C8 /* HYXRouterModule-dummy.m in Sources */,
 				0E2D4BAC960481BAD67E5687D324B29D /* HYXRouterNavigationCallback.m in Sources */,
 				4EFF80C1194D09E10780EFE0EEEB213E /* HYXRouterOpenBaseModel.m in Sources */,
