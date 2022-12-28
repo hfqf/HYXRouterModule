@@ -1,7 +1,8 @@
 
 # HYXRouterModule
+一款基于MGRouter二次封装的iOS端轻量级路由组件
 
-#### 介绍
+#### 特点
 ```
  1.根据命名规则自动注册module \
  2.提供UIModule和ServiceModule两个打开方案 \
