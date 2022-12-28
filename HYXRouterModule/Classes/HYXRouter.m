@@ -3,7 +3,7 @@
 //  ChinaNationalSports
 //
 //  Created by Points on 2019/9/18.
-//  Copyright © 2019 huiyinxun. All rights reserved.
+//  Copyright © 2019 Points. All rights reserved.
 // 路由组件派发中心
 
 #import "HYXRouter.h"

@@ -3,7 +3,7 @@
 //  ChinaNationalSports
 //
 //  Created by Points on 2019/9/16.
-//  Copyright © 2019 huiyinxun. All rights reserved.
+//  Copyright © 2019 Points. All rights reserved.
 //  注册路由
 
 #import "UIApplication+HYXRouter.h"
@@ -13,7 +13,7 @@
 #import "NSObject+Router.h"
 
 #define Router_Scheme @"ios"
-#define Router_Host   @"huiyinxun.com"
+#define Router_Host   @"Points.com"
 
 @implementation UIApplication (HYXRouter)
 

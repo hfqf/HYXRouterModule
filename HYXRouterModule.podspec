@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'HYXRouterModule'
   s.version          = '0.9.6'
-  s.summary          = 'huiyinxun.com内部使用的基于MGJRouter扩展的iOS路由组件'
+  s.summary          = 'Points.com内部使用的基于MGJRouter扩展的iOS路由组件'
   s.description      = '特性:1.根据命名规则自动注册module \
                             2.提供UIModule和ServiceModule两个打开方案 \
                             3.提供拦截器功能，比如登录 \

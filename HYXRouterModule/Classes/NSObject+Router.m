@@ -3,7 +3,7 @@
 //  ChinaNationalSports
 //
 //  Created by Points on 2019/12/25.
-//  Copyright © 2019 huiyinxun. All rights reserved.
+//  Copyright © 2019 Points. All rights reserved.
 //
 
 #import "NSObject+Router.h"
