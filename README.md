@@ -12,9 +12,12 @@
 
 #### 使用说明
 1.添加依赖
-```pod  HYXRouterModule
+```
+pod  HYXRouterModule
+
 ```
 2.具体使用
+```
     HYXRouterControllerModel *target = [HYXRouterControllerModel
                                         from:@"HYXTest1ViewController"
                                         navi:self.navigationController
