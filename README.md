@@ -11,12 +11,14 @@
 ```
 
 #### 使用说明
-
+1.添加依赖
+```pod  HYXRouterModule
 ```
+2.具体使用
     HYXRouterControllerModel *target = [HYXRouterControllerModel
                                         from:@"HYXTest1ViewController"
                                         navi:self.navigationController
-                                        objectPropertys:nil
+                                        objectPropertys:{@"key1":value1}
                                         intPropertys:nil
                                         boolPropertys:nil];
     HYXRouterLoginInterceptor *interceptor = [[HYXRouterLoginInterceptor alloc]init];
@@ -32,4 +34,5 @@
         
     });
 ```
+3.objectPropertys,intPropertys,boolPropertys三者都可以使用kvc方式传值给页面
 
